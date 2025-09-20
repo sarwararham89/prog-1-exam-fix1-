@@ -36,7 +36,7 @@ public class Employee{
         return true;
         }
         else{
-        System.out.printf("You must wait", 16 < age);
+        System.out.printf("You must wait %d more years.%n", 16 - age);
         return false;
         } 
     }
@@ -44,22 +44,20 @@ public class Employee{
     /*
      * Returns the net pay for the outstanding unpaid hours
      */
-    private double calculatePay(){
-        double pay;
-        pay = unpaidHours * hourlyWage;
-        int taxesAndDeduction = -30;
-        double payAfterTaxes;
-        payAfterTaxes = pay - taxesAndDeduction;
-        return payAfterTaxes;
+    private double calculatePay(double hoursWorked){
+        // question 13
+        double grossnet = hourlyWage * hoursWorked;
+        double netPay = grossnet - (grossnet * 0.30); // 30% tax/deduction
+        return netPay;
     }
 
     /*
      * Output the payment record and resets unpaid hours
      */
-    public void paySalary(){
-        double pay = calculatePay();
-        if (
-        System.out.println(fullname,"received a wire transfer of");
+    public void paySalary(double hoursWorked){
+        // question 14
+        double netPay = calculatePay(hoursWorked);
+        System.out.println(fullname + "received a wire transfer of" + netPay + "CAD");
         unpaidHours = 0; 
     }
 }
